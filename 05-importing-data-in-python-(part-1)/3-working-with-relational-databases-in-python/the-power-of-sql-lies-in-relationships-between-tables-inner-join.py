@@ -40,6 +40,7 @@ engine = create_engine('sqlite:///../_datasets/Chinook.sqlite')
 # Perform query and save results to DataFrame: df
 with engine.connect() as con:
     rs = con.execute("SELECT Title, Name FROM Album INNER JOIN Artist on Album.ArtistID = Artist.ArtistID", engine)
+# this won't work, it should be writtten like rs = con.execute("SELECT Title, Name FROM Album INNER JOIN Artist on Album.ArtistID = Artist.ArtistID")
     df = pd.DataFrame(rs.fetchall())
     df.columns = rs.keys()
 
